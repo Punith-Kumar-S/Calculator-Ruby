@@ -1,0 +1,56 @@
+<body style="color:green;background-image: url(<%= asset_path 'back.jpg' %>);background-size: cover;">
+<%= form_for :calculator, url: { action: :new }, method: :get do |f|   %>
+<center><h1>Calculator</h1>
+<p>Enter the first number  
+  <%= number_field_tag :a, params[:a] ,:style=>'width:100px;background-color:#d1d1d1;height:30px;font-size:15px;'%></p></br>
+  <p>Select Operator  <%= select_tag :operation, options_for_select([['+', :sum], ['-', :subtr], ['x', :multiply], ['/', :divide]], params[:operation]) ,:style=>'width:100px;background-color: DodgerBlue;height:30px;font-size:15px;' %></p></br>
+  <p>Enter the second number <%= number_field_tag :b, params[:b],:style=>'width:100px;background-color: #d1d1d1;height:30px;font-size:15px;' %></p></br>
+  <%= f.submit 'CALCULATE!!' ,:class =>'btn'%>
+  <center>
+<% end %>
+
+<% unless @result.nil? %>
+<center></br>
+  <h2> RESULT : <%= @result %> </h2>
+</center>
+<% end %>
+</body>
+<style>
+h1 
+{ color: #d54d7b; 
+font-family: "Great Vibes"; 
+font-size: 75px; line-height: 160px; 
+font-weight: normal;
+ margin-bottom: 0px; 
+margin-top: 5px; 
+text-align: center; 
+text-shadow: 0 1px 1px #fff; }
+p {
+  color: white;
+  font-size: 22px;
+  font-family: 'Trocchi', serif;
+}
+h2{
+  color: white;
+  font-family: 'Trocchi', serif;
+}
+.btn {
+  position: absolute;
+  top: 80%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  background-color: #f1f1f1;
+  color: black;
+  font-size: 16px;
+  padding: 16px 30px;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  text-align: center;
+}
+.btn:hover {
+  background-color: black;
+  color: white;
+}
+</style>
